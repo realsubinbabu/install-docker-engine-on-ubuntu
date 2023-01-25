@@ -12,17 +12,21 @@ This script is designed to automate the installation of Docker and Docker Compos
 </ul>
 <h3>Usage</h3>
 
-1. Download the script and make it executable: 
+1. Download the script:
 
     ```https://github.com/realsubinbabu/install-docker-engine-on-ubuntu.git```
+    
+    or create a file: ```docker-install.sh``` in your server using nano or any editor, and copy / paste the code.
+    
+2. Make it executable with
 
     ```chmod +x docker-install.sh```
 
-2. Run the script:
+3. Run the script:
 
     ```./docker-install.sh```
 
-3. Select an option from the menu to continue with the installation.
+4. Select an option from the menu to continue with the installation.
 
 - Install Docker and Docker Compose
 - Install Only Docker

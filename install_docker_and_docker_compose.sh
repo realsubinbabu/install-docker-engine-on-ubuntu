@@ -21,9 +21,10 @@ lsb_release -cs > /tmp/os_codename.txt
 
 if [ "$choice" = "1" ] || [ "$choice" = "2" ]; then
     # Add Docker's official GPG key
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
     # Add the Docker repository
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(cat /tmp/os_codename.txt) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(cat /tmp/os_codename.txt) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 fi
 
 # Update the apt package list (again)
@@ -31,7 +32,7 @@ sudo apt-get update
 
 if [ "$choice" = "1" ] || [ "$choice" = "2" ]; then
     # Install Docker
-    sudo apt-get install -y docker-ce
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 fi
 
 if [ "$choice" = "1" ] || [ "$choice" = "3" ]; then
